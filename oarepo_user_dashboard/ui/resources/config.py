@@ -32,7 +32,7 @@ class VocabularyFormDepositVocabularyOptionsComponent(
 
 class InvenioVocabulariesUIResourceConfig(RecordsUIResourceConfig):
     template_folder = "../templates"
-    url_prefix = "/vocabularies/"
+    url_prefix = "/ducciano/"
     blueprint_name = "oarepo_vocabularies_ui"
     ui_serializer_class = (
         "oarepo_vocabularies.resources.records.ui.VocabularyUIJSONSerializer"

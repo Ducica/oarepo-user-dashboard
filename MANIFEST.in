@@ -1,14 +1,14 @@
 exclude tests/*
-recursive-include oarepo_vocabularies *.yaml
-recursive-include oarepo_vocabularies *.json
-recursive-include oarepo_vocabularies *.html
-recursive-include oarepo_vocabularies *.jinja
-recursive-include oarepo_vocabularies *.jinja2
-recursive-include oarepo_vocabularies *.less
-recursive-include oarepo_vocabularies *.js
-recursive-include oarepo_vocabularies *.jsx
-recursive-include oarepo_vocabularies *.overrides
-recursive-include oarepo_vocabularies *.variables
-recursive-include oarepo_vocabularies *.po
-recursive-include oarepo_vocabularies *.mo
-recursive-include oarepo_vocabularies *.pot
+recursive-include oarepo_user_dashboard *.yaml
+recursive-include oarepo_user_dashboard *.json
+recursive-include oarepo_user_dashboard *.html
+recursive-include oarepo_user_dashboard *.jinja
+recursive-include oarepo_user_dashboard *.jinja2
+recursive-include oarepo_user_dashboard *.less
+recursive-include oarepo_user_dashboard *.js
+recursive-include oarepo_user_dashboard *.jsx
+recursive-include oarepo_user_dashboard *.overrides
+recursive-include oarepo_user_dashboard *.variables
+recursive-include oarepo_user_dashboard *.po
+recursive-include oarepo_user_dashboard *.mo
+recursive-include oarepo_user_dashboard *.pot
