@@ -7,8 +7,8 @@ import re
 
 from invenio_base.utils import obj_or_import_string
 
-from oarepo_vocabularies.proxies import current_type_service
-from oarepo_vocabularies.ui import config as config
+from oarepo_user_dashboard.proxies import current_type_service
+from oarepo_user_dashboard.ui import config as config
 
 
 class InvenioVocabulariesAppExtension:
@@ -19,7 +19,7 @@ class InvenioVocabulariesAppExtension:
             self.init_resource(app)
 
     def init_app(self, app):
-        app.extensions["oarepo_vocabularies_ui"] = self
+        app.extensions["oarepo_user_dashboard_ui"] = self
 
     def init_resource(self, app):
         """Initialize vocabulary resources."""

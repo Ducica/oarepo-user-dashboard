@@ -1,6 +1,6 @@
 def create_api_blueprint(app):
     """Create MymodelRecord blueprint."""
-    blueprint = app.extensions["oarepo-vocabularies"].type_resource.as_blueprint()
+    blueprint = app.extensions["oarepo-user-dashboard"].type_resource.as_blueprint()
     blueprint.record_once(init_create_api_blueprint)
     return blueprint
 
@@ -8,7 +8,7 @@ def create_api_blueprint(app):
 def init_create_api_blueprint(state):
     """Init app."""
     app = state.app
-    ext = app.extensions["oarepo-vocabularies"]
+    ext = app.extensions["oarepo-user-dashboard"]
 
     # Register service.
     sregistry = app.extensions["invenio-records-resources"].registry

@@ -1,9 +1,9 @@
 from flask_resources import ResourceConfig, ResponseHandler
 
-from oarepo_vocabularies.resources.ui import VocabularyTypeUIJSONSerializer
+from oarepo_user_dashboard.resources.ui import VocabularyTypeUIJSONSerializer
 
 
-class VocabularyTypeResourceConfig(ResourceConfig):
+class DashboardTypeResourceConfig(ResourceConfig):
     blueprint_name = "vocabulary_types"
     url_prefix = "/vocabularies"
 

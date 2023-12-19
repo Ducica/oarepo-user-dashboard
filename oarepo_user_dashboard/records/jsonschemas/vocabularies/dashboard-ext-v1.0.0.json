@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "local://vocabularies/vocabulary-ext-v1.0.0.json",
+  "$id": "local://vocabularies/vocabulary-exta-v1.0.0.json",
   "type": "object",
   "additionalProperties": true,
   "properties": {

@@ -91,9 +91,9 @@ def app_config(app_config):
         AuthoritativeVocabulariesResourceConfig,
     )
     from oarepo_vocabularies.resources.config import VocabulariesResourceConfig
-    from oarepo_vocabularies.resources.vocabulary_type import (
-        VocabularyTypeResource,
-        VocabularyTypeResourceConfig,
+    from oarepo_vocabularies.resources.dashboard_type import (
+        DashboardTypeResource,
+        DashboardTypeResourceConfig,
     )
     from oarepo_vocabularies.services.config import (
         VocabulariesConfig,

@@ -1,4 +1,4 @@
-from oarepo_vocabularies.authorities.resources import (
+from oarepo_user_dashboard.authorities.resources import (
     AuthoritativeVocabulariesResource,
     AuthoritativeVocabulariesResourceConfig,
 )

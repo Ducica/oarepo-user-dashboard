@@ -7,7 +7,7 @@ from invenio_vocabularies.proxies import current_service
 from invenio_vocabularies.records.models import VocabularyType
 
 
-class VocabularyTypeService(Service):
+class DashboardTypeService(Service):
     """Vocabulary types service."""
 
     @property

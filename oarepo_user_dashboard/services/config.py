@@ -4,10 +4,10 @@ from invenio_records_resources.services.base import ServiceListResult
 from invenio_vocabularies.services import VocabulariesServiceConfig
 from oarepo_runtime.services.config.service import PermissionsPresetsConfigMixin
 
-from oarepo_vocabularies.records.api import Vocabulary
-from oarepo_vocabularies.services.components.hierarchy import HierarchyComponent
-from oarepo_vocabularies.services.schema import VocabularySchema
-from oarepo_vocabularies.services.search import VocabularySearchOptions
+from oarepo_user_dashboard.records.api import Vocabulary
+from oarepo_user_dashboard.services.components.hierarchy import HierarchyComponent
+from oarepo_user_dashboard.services.schema import VocabularySchema
+from oarepo_user_dashboard.services.search import VocabularySearchOptions
 
 from .components.scanning_order import ScanningOrderComponent
 from .permissions import PermissionPolicy
@@ -59,8 +59,8 @@ class VocabularyMetadataList(ServiceListResult):
         return res
 
 
-class VocabularyTypeServiceConfig(PermissionsPresetsConfigMixin):
-    service_id = "vocabulary_type"
+class DashboardTypeServiceConfig(PermissionsPresetsConfigMixin):
+    service_id = "dashboard_type"
     schema = VocabularyMetadataSchema
     result_list_cls = VocabularyMetadataList
 

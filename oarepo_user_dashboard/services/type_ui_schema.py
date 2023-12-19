@@ -1,7 +1,7 @@
 from flask_resources import BaseObjectSchema
 from marshmallow import post_dump
 
-from oarepo_vocabularies.services.ui_schema import VocabularyI18nStrUIField
+from oarepo_user_dashboard.services.ui_schema import VocabularyI18nStrUIField
 
 
 class VocabularyTypeUISchema(BaseObjectSchema):

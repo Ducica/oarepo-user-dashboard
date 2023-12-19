@@ -2,7 +2,7 @@ from flask import g
 from flask_resources import Resource, response_handler, route
 
 
-class VocabularyTypeResource(Resource):
+class DashboardTypeResource(Resource):
     def __init__(self, config, service):
         super().__init__(config)
         self.service = service

@@ -7,9 +7,9 @@ from oarepo_runtime.services.relations.errors import (
     MultipleInvalidRelationErrors,
 )
 
-from oarepo_vocabularies.authorities.proxies import authorities
-from oarepo_vocabularies.authorities.service import AuthorityService
-from oarepo_vocabularies.records.api import find_vocabulary_relations
+from oarepo_user_dashboard.authorities.proxies import authorities
+from oarepo_user_dashboard.authorities.service import AuthorityService
+from oarepo_user_dashboard.records.api import find_vocabulary_relations
 
 
 class AuthorityComponent(ServiceComponent):

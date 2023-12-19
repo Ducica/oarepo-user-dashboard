@@ -4,16 +4,16 @@ from oarepo_ui.resources import UIResourceConfig
 
 class VocabularyTypeUIResourceConfig(UIResourceConfig):
     url_prefix = "/vocabularies"
-    blueprint_name = "vocabulary_type_app"
+    blueprint_name = "dashboard_type_app"
     ui_serializer_class = (
-        "oarepo_vocabularies.resources.ui.VocabularyTypeUIJSONSerializer"
+        "oarepo_user_dashboard.resources.ui.VocabularyTypeUIJSONSerializer"
     )
-    api_service = "vocabulary_type"
-    layout = "vocabulary"
+    api_service = "dashboard_type"
+    layout = "dashboard"
 
     templates = {
         "list": {
-            "layout": "oarepo_vocabularies_ui/VocabulariesList.jinja",
+            "layout": "oarepo_user_dashboard_ui/VocabulariesList.jinja",
         }
     }
 

@@ -4,7 +4,7 @@ from invenio_records_resources.services.custom_fields.text import KeywordCF
 from invenio_vocabularies.services.schema import i18n_strings
 from marshmallow import fields as ma_fields
 
-from oarepo_vocabularies.services.ui_schema import VocabularyI18nStrUIField
+from oarepo_user_dashboard.services.ui_schema import VocabularyI18nStrUIField
 
 
 class HierarchyCF:

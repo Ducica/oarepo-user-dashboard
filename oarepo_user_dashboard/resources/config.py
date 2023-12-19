@@ -10,7 +10,7 @@ from invenio_vocabularies.resources.resource import (
 from marshmallow import fields
 from oarepo_runtime.resources import LocalizedUIJSONSerializer
 
-from oarepo_vocabularies.services.ui_schema import VocabularyUISchema
+from oarepo_user_dashboard.services.ui_schema import VocabularyUISchema
 
 
 class VocabularySearchRequestArgsSchema(InvenioVocabularySearchRequestArgsSchema):

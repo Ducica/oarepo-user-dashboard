@@ -13,13 +13,15 @@ class OARepoVocabularies(object):
         self.init_config(app)
         self.init_services(app)
         self.init_resource(app)
-        app.extensions["oarepo-vocabularies"] = self
+        app.extensions["oarepo-user-dashboard"] = self
 
     def init_services(self, app):
         """Initialize services."""
+        
         self.type_service = app.config["OAREPO_VOCABULARY_TYPE_SERVICE"](
             config=app.config["OAREPO_VOCABULARY_TYPE_SERVICE_CONFIG"](),
         )
+        print(self.type_service, "TYPE SERVICE")
 
     def init_config(self, app):
         """Initialize configuration."""
@@ -61,3 +63,4 @@ class OARepoVocabularies(object):
             config=app.config["OAREPO_VOCABULARY_TYPE_RESOURCE_CONFIG"](),
             service=self.type_service,
         )
+        print(self.type_resource, "TYPE RESOURCE")

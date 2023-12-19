@@ -1,7 +1,7 @@
-from oarepo_vocabularies.authorities.resources.config import (
+from oarepo_user_dashboard.authorities.resources.config import (
     AuthoritativeVocabulariesResourceConfig,
 )
-from oarepo_vocabularies.authorities.resources.resource import (
+from oarepo_user_dashboard.authorities.resources.resource import (
     AuthoritativeVocabulariesResource,
 )
 

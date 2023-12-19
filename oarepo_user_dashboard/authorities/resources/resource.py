@@ -7,8 +7,8 @@ from invenio_records_resources.resources.records.resource import (
 )
 from invenio_vocabularies.records.models import VocabularyType
 
-from oarepo_vocabularies.authorities.proxies import authorities
-from oarepo_vocabularies.authorities.service import AuthorityService
+from oarepo_user_dashboard.authorities.proxies import authorities
+from oarepo_user_dashboard.authorities.service import AuthorityService
 
 
 class AuthoritativeVocabulariesResource(Resource):

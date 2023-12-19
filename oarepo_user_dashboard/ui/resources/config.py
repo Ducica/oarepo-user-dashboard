@@ -4,11 +4,11 @@ from invenio_records_resources.services import Link, pagination_links
 from oarepo_ui.resources.config import RecordsUIResourceConfig
 from oarepo_ui.resources.links import UIRecordLink
 
-from oarepo_vocabularies.ui.resources.components.deposit import (
+from oarepo_user_dashboard.ui.resources.components.deposit import (
     DepositVocabularyOptionsComponent,
 )
-from oarepo_vocabularies.ui.resources.components.search import VocabularySearchComponent
-from oarepo_vocabularies.ui.resources.components.vocabulary_ui_resource import (
+from oarepo_user_dashboard.ui.resources.components.search import VocabularySearchComponent
+from oarepo_user_dashboard.ui.resources.components.vocabulary_ui_resource import (
     VocabularyRecordsComponent,
 )
 
@@ -33,26 +33,26 @@ class VocabularyFormDepositVocabularyOptionsComponent(
 class InvenioVocabulariesUIResourceConfig(RecordsUIResourceConfig):
     template_folder = "../templates"
     url_prefix = "/ducciano/"
-    blueprint_name = "oarepo_vocabularies_ui"
+    blueprint_name = "oarepo_user_dashboard_ui"
     ui_serializer_class = (
-        "oarepo_vocabularies.resources.records.ui.VocabularyUIJSONSerializer"
+        "oarepo_user_dashboard.resources.records.ui.VocabularyUIJSONSerializer"
     )
     api_service = "vocabularies"
-    layout = "oarepo_vocabularies_ui"
+    layout = "oarepo_user_dashboard_ui"
 
     templates = {
         "detail": {
-            "layout": "oarepo_vocabularies_ui/VocabulariesDetail.jinja",
+            "layout": "oarepo_user_dashboard_ui/VocabulariesDetail.jinja",
             "blocks": {
                 "record_sidebar": "VocabulariesSidebar",
             },
         },
         "search": {
-            "layout": "oarepo_vocabularies_ui/VocabulariesSearch.jinja",
+            "layout": "oarepo_user_dashboard_ui/VocabulariesSearch.jinja",
             "app_id": "OarepoVocabularies.Search",
         },
-        "create": {"layout": "oarepo_vocabularies_ui/VocabulariesForm.jinja"},
-        "edit": {"layout": "oarepo_vocabularies_ui/VocabulariesForm.jinja"},
+        "create": {"layout": "oarepo_user_dashboard_ui/VocabulariesForm.jinja"},
+        "edit": {"layout": "oarepo_user_dashboard_ui/VocabulariesForm.jinja"},
     }
 
     routes = {
