@@ -89,7 +89,7 @@ class VocabulariesConfig(VocabulariesServiceConfig):
     ]
     permission_policy_cls = PermissionPolicy
 
-    url_prefix = "/vocabularies/"
+    url_prefix = "/ducciano/"
 
     links_item = {
         **VocabulariesServiceConfig.links_item,

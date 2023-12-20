@@ -3,7 +3,7 @@ from functools import lru_cache
 from invenio_base.utils import obj_or_import_string
 
 
-class OARepoVocabulariesAuthorities(object):
+class OARepoDashboardAuthorities(object):
     """OARepo extension of Invenio-Vocabularies for authorities."""
 
     def __init__(self, app=None):

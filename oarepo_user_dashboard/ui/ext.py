@@ -11,7 +11,7 @@ from oarepo_user_dashboard.proxies import current_type_service
 from oarepo_user_dashboard.ui import config as config
 
 
-class InvenioVocabulariesAppExtension:
+class InvenioDashboardAppExtension:
     def __init__(self, app=None):
         if app:
             self.init_config(app)

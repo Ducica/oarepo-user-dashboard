@@ -1,4 +1,4 @@
-class OARepoVocabularies(object):
+class OARepoDashboard(object):
     """OARepo extension of Invenio-Vocabularies."""
 
     def __init__(self, app=None):
@@ -21,7 +21,6 @@ class OARepoVocabularies(object):
         self.type_service = app.config["OAREPO_VOCABULARY_TYPE_SERVICE"](
             config=app.config["OAREPO_VOCABULARY_TYPE_SERVICE_CONFIG"](),
         )
-        print(self.type_service, "TYPE SERVICE")
 
     def init_config(self, app):
         """Initialize configuration."""

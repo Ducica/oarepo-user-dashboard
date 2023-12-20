@@ -2,8 +2,8 @@
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
 
-from .ext import InvenioVocabulariesAppExtension
+from .ext import InvenioDashboardAppExtension
 
 __version__ = "1.0.0"
 
-__all__ = ("__version__", "InvenioVocabulariesAppExtension")
+__all__ = ("__version__", "InvenioDashboardAppExtension")
