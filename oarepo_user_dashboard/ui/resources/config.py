@@ -32,59 +32,56 @@ class VocabularyFormDepositVocabularyOptionsComponent(
 
 class InvenioVocabulariesUIResourceConfig(RecordsUIResourceConfig):
     template_folder = "../templates"
-    url_prefix = "/ducciano/"
+    url_prefix = "/me/"
     blueprint_name = "oarepo_user_dashboard_ui"
     ui_serializer_class = (
         "oarepo_user_dashboard.resources.records.ui.VocabularyUIJSONSerializer"
     )
-    api_service = "vocabularies"
-    layout = "oarepo_user_dashboard_ui"
+    # api_service = "vocabularies"
+    # layout = "oarepo_user_dashboard_ui"
 
     templates = {
-        "detail": {
-            "layout": "oarepo_user_dashboard_ui/VocabulariesDetail.jinja",
-            "blocks": {
-                "record_sidebar": "VocabulariesSidebar",
-            },
+        "uploads": {
+            "layout": "oarepo_user_dashboard_ui/uploads.html",
         },
-        "search": {
-            "layout": "oarepo_user_dashboard_ui/VocabulariesSearch.jinja",
-            "app_id": "OarepoVocabularies.Search",
+        "communities": {
+            "layout": "oarepo_user_dashboard_ui/communities.html",
         },
-        "create": {"layout": "oarepo_user_dashboard_ui/VocabulariesForm.jinja"},
-        "edit": {"layout": "oarepo_user_dashboard_ui/VocabulariesForm.jinja"},
+       
     }
-
+    
+        
+    
     routes = {
-        "create": "/<vocabulary_type>/_new",
-        "edit": "/<vocabulary_type>/<pid_value>/edit",
+        "uploads": "/uploads/",
+        "communities": "/communities/",
         "search": "/<vocabulary_type>/",
         "detail": "/<vocabulary_type>/<pid_value>",
         "export": "/<vocabulary_type>/<pid_value>/export/<export_format>",
     }
 
-    components = [
-        VocabularyRecordsComponent,
-        VocabularyFormDepositVocabularyOptionsComponent,
-        VocabularySearchComponent,
-    ]
+    # components = [
+    #     VocabularyRecordsComponent,
+    #     VocabularyFormDepositVocabularyOptionsComponent,
+    #     VocabularySearchComponent,
+    # ]
 
-    request_vocabulary_type_args = {"vocabulary_type": ma.fields.Str()}
+    # request_vocabulary_type_args = {"vocabulary_type": ma.fields.Str()}
 
-    ui_links_item = {
-        "self": UIRecordLink("{+ui}{+url_prefix}{vocabulary_type}/{id}"),
-        "edit": UIRecordLink("{+ui}{+url_prefix}{vocabulary_type}/{id}/edit"),
-        "search": UIRecordLink("{+ui}{+url_prefix}{vocabulary_type}/"),
-    }
+    # ui_links_item = {
+    #     "self": UIRecordLink("{+ui}{+url_prefix}{vocabulary_type}/{id}"),
+    #     "edit": UIRecordLink("{+ui}{+url_prefix}{vocabulary_type}/{id}/edit"),
+    #     "search": UIRecordLink("{+ui}{+url_prefix}{vocabulary_type}/"),
+    # }
 
-    @property
-    def ui_links_search(self):
-        return {
-            **pagination_links("{+ui}{+url_prefix}{vocabulary_type}/{?args*}"),
-            "create": Link("{+ui}{+url_prefix}{vocabulary_type}/_new"),
-        }
+    # @property
+    # def ui_links_search(self):
+    #     return {
+    #         **pagination_links("{+ui}{+url_prefix}{vocabulary_type}/{?args*}"),
+    #         "create": Link("{+ui}{+url_prefix}{vocabulary_type}/_new"),
+    #     }
 
-    def vocabulary_props_config(self, vocabulary_type):
-        return current_app.config.get("INVENIO_VOCABULARY_TYPE_METADATA", {}).get(
-            vocabulary_type, {}
-        )
+    # def vocabulary_props_config(self, vocabulary_type):
+    #     return current_app.config.get("INVENIO_VOCABULARY_TYPE_METADATA", {}).get(
+    #         vocabulary_type, {}
+    #     )

@@ -1,15 +1,15 @@
-OAREPO_VOCABULARIES_UI_RESOURCE = (
+OAREPO_DASHBOARD_UI_RESOURCE = (
     "oarepo_user_dashboard.ui.resources.resource:InvenioVocabulariesUIResource"
 )
-OAREPO_VOCABULARIES_UI_RESOURCE_CONFIG = (
+OAREPO_DASHBOARD_UI_RESOURCE_CONFIG = (
     "oarepo_user_dashboard.ui.resources.config:InvenioVocabulariesUIResourceConfig"
 )
 
-VOCABULARY_TYPE_UI_RESOURCE = (
-    "oarepo_user_dashboard.ui.resources.dashboard_type.resource:VocabularyTypeUIResource"
+DASHBOARD_TYPE_UI_RESOURCE = (
+    "oarepo_user_dashboard.ui.resources.dashboard_type.resource:DashboardTypeUIResource"
 )
 
-VOCABULARY_TYPE_UI_RESOURCE_CONFIG = "oarepo_user_dashboard.ui.resources.dashboard_type.config:VocabularyTypeUIResourceConfig"
+DASHBOARD_TYPE_UI_RESOURCE_CONFIG = "oarepo_user_dashboard.ui.resources.dashboard_type.config:DashboardTypeUIResourceConfig"
 OAREPO_UI_LESS_COMPONENTS = [
     "dl_table",
 ]

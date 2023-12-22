@@ -17,9 +17,9 @@ class OARepoDashboard(object):
 
     def init_services(self, app):
         """Initialize services."""
-        
-        self.type_service = app.config["OAREPO_VOCABULARY_TYPE_SERVICE"](
-            config=app.config["OAREPO_VOCABULARY_TYPE_SERVICE_CONFIG"](),
+       
+        self.type_service = app.config["OAREPO_DASHBOARD_TYPE_SERVICE"](
+            config=app.config["OAREPO_DASHBOARD_TYPE_SERVICE_CONFIG"](),
         )
 
     def init_config(self, app):
@@ -27,39 +27,23 @@ class OARepoDashboard(object):
         from . import config
 
         for k in dir(config):
-            if k.startswith("OAREPO_VOCABULARIES_"):
+            if k.startswith("OAREPO_DASHBOARD_"):
                 app.config.setdefault(k, getattr(config, k))
-            if k.startswith("OAREPO_VOCABULARY_"):
-                app.config.setdefault(k, getattr(config, k))
-            if k.startswith("DATASTREAMS_CONFIG_GENERATOR_"):
-                app.config.setdefault(k, getattr(config, k))
-            elif k.startswith("DATASTREAMS_"):
-                app.config.setdefault(k, {}).update(getattr(config, k))
-            if k.startswith("VOCABULARIES"):
-                app.config.setdefault(k, getattr(config, k))
-        app.config.setdefault(
-            "VOCABULARIES_FACET_CACHE_SIZE", config.VOCABULARIES_FACET_CACHE_SIZE
-        )
-        app.config.setdefault(
-            "VOCABULARIES_FACET_CACHE_TTL", config.VOCABULARIES_FACET_CACHE_TTL
-        )
-        app.config.setdefault(
-            "INVENIO_VOCABULARY_TYPE_METADATA", config.INVENIO_VOCABULARY_TYPE_METADATA
-        )
+            # if k.startswith("OAREPO_VOCABULARY_"):
+            #     app.config.setdefault(k, getattr(config, k))
+            # if k.startswith("DATASTREAMS_CONFIG_GENERATOR_"):
+            #     app.config.setdefault(k, getattr(config, k))
+            # elif k.startswith("DATASTREAMS_"):
+            #     app.config.setdefault(k, {}).update(getattr(config, k))
+            # if k.startswith("VOCABULARIES"):
+            #     app.config.setdefault(k, getattr(config, k))
+      
 
-        if "OAREPO_PERMISSIONS_PRESETS" not in app.config:
-            app.config["OAREPO_PERMISSIONS_PRESETS"] = {}
-
-        for k in config.OAREPO_VOCABULARIES_PERMISSIONS_PRESETS:
-            if k not in app.config["OAREPO_PERMISSIONS_PRESETS"]:
-                app.config["OAREPO_PERMISSIONS_PRESETS"][
-                    k
-                ] = config.OAREPO_VOCABULARIES_PERMISSIONS_PRESETS[k]
 
     def init_resource(self, app):
         """Initialize resources."""
-        self.type_resource = app.config["OAREPO_VOCABULARY_TYPE_RESOURCE"](
-            config=app.config["OAREPO_VOCABULARY_TYPE_RESOURCE_CONFIG"](),
+        self.type_resource = app.config["OAREPO_DASHBOARD_TYPE_RESOURCE"](
+            config=app.config["OAREPO_DASHBOARD_TYPE_RESOURCE_CONFIG"](),
             service=self.type_service,
         )
-        print(self.type_resource, "TYPE RESOURCE")
+   

@@ -24,18 +24,18 @@ class InvenioDashboardAppExtension:
     def init_resource(self, app):
         """Initialize vocabulary resources."""
         self.resource = obj_or_import_string(
-            app.config["OAREPO_VOCABULARIES_UI_RESOURCE"]
+            app.config["OAREPO_DASHBOARD_UI_RESOURCE"]
         )(
             config=obj_or_import_string(
-                app.config["OAREPO_VOCABULARIES_UI_RESOURCE_CONFIG"]
+                app.config["OAREPO_DASHBOARD_UI_RESOURCE_CONFIG"]
             )(),
         )
 
         self.type_resource = obj_or_import_string(
-            app.config["VOCABULARY_TYPE_UI_RESOURCE"]
+            app.config["DASHBOARD_TYPE_UI_RESOURCE"]
         )(
             config=obj_or_import_string(
-                app.config["VOCABULARY_TYPE_UI_RESOURCE_CONFIG"]
+                app.config["DASHBOARD_TYPE_UI_RESOURCE_CONFIG"]
             )(),
             service=current_type_service,
         )

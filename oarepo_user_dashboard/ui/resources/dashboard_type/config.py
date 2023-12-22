@@ -2,8 +2,8 @@ from invenio_base.utils import obj_or_import_string
 from oarepo_ui.resources import UIResourceConfig
 
 
-class VocabularyTypeUIResourceConfig(UIResourceConfig):
-    url_prefix = "/vocabularies"
+class DashboardTypeUIResourceConfig(UIResourceConfig):
+    url_prefix = "/ducciano"
     blueprint_name = "dashboard_type_app"
     ui_serializer_class = (
         "oarepo_user_dashboard.resources.ui.VocabularyTypeUIJSONSerializer"
