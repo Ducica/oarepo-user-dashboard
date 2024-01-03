@@ -37,7 +37,7 @@ class InvenioVocabulariesUIResourceConfig(RecordsUIResourceConfig):
     ui_serializer_class = (
         "oarepo_user_dashboard.resources.records.ui.VocabularyUIJSONSerializer"
     )
-    # api_service = "vocabularies"
+    api_service = "nr_documents"
     # layout = "oarepo_user_dashboard_ui"
 
     templates = {
@@ -49,6 +49,14 @@ class InvenioVocabulariesUIResourceConfig(RecordsUIResourceConfig):
         },
        
     }
+    
+    def search_active_facets(self, api_config, identity):
+        return [
+            k
+            for k in self.search_available_facets(api_config, identity).keys()
+            # TODO: replace with a more generic `item.filterable` attribute check
+            if not k.startswith("metadata_abstract")
+        ]
     
         
     

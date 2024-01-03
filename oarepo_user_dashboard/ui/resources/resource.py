@@ -1,10 +1,11 @@
 from flask import g, render_template
-from flask_resources import from_conf, request_parser, resource_requestctx
+from flask_resources import from_conf, request_parser, resource_requestctx, route
 from flask_security import login_required
 from invenio_records_resources.resources.records.resource import (
     request_read_args,
     request_view_args,
 )
+from functools import partial
 from invenio_records_resources.services import LinksTemplate
 from oarepo_ui.resources.resource import RecordsUIResource
 
@@ -15,8 +16,45 @@ request_vocabulary_args = request_parser(
 
 class InvenioVocabulariesUIResource(RecordsUIResource):
     
+
+    
+    def create_url_rules(self):
+        """Create the URL rules for the record resource."""
+        route_config = self.config.routes
+        search_route = route_config["search"]
+        if not search_route.endswith("/"):
+            search_route += "/"
+        search_route_without_slash = search_route[:-1]
+        routes = [
+            route("GET", route_config["export"], self.export),
+            route("GET", route_config["detail"], self.detail),
+            route("GET", search_route, self.search),
+            route("GET", search_route_without_slash, self.search_without_slash),
+        ]
+        if "create" in route_config:
+            routes += [route("GET", route_config["create"], self.create)]
+        if "edit" in route_config:
+            routes += [route("GET", route_config["edit"], self.edit)]
+        if "uploads" in route_config:
+            routes += [route("GET", route_config["uploads"], self.uploads)]
+        if "communities" in route_config:
+            routes += [route("GET", route_config["communities"], self.communities)]
+        return routes
+    
     def uploads(self):
-        return render_template("uploads")
+        search_options = dict(
+            api_config=self.api_service.config,
+            identity=g.identity,
+            overrides={"endpoint": "/api/nr-documents"},
+        )
+        search_config = partial(self.config.search_app_config, **search_options)
+        search_app_config = search_config(app_id="UserDashboard.Uploads")
+
+        return render_template(self.config.templates["uploads"]["layout"], 
+                               search_app_config=search_app_config)
+    
+    def communities(self):
+        return render_template(self.config.templates["communities"]["layout"])
     
     # @request_read_args
     # @request_view_args

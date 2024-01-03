@@ -4,9 +4,7 @@ from werkzeug.local import LocalProxy
 
 def _ext_proxy(attr):
     return LocalProxy(
-        lambda: (lambda value: (print(value, "current_type_service"), value))(
-            getattr(current_app.extensions["oarepo-user-dashboard"], attr)
-        )
+        lambda: getattr(current_app.extensions["oarepo-user-dashboard"], attr)
     )
 
 

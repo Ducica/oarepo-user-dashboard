@@ -5,14 +5,14 @@
     Invenio App RDM is free software; you can redistribute it and/or modify it
     under the terms of the MIT License; see LICENSE file for more details.
   #}
-{%- set title = _("Requests") %}
+{%- set title = _("Communities") %}
 {%- extends "oarepo_user_dashboard_ui/base.html" %}
-{% set active_dashboard_menu_item = "requests" %}
+{% set active_dashboard_menu_item = "communities" %}
 {%- block javascript %}
     {{ super() }}
 {%- endblock javascript %}
 {%- block user_dashboard_body %}
-    <div id="invenio-search-config"
-         data-invenio-search-config='{{ search_app_rdm_user_requests_config(app_id="InvenioAppRdm.DashboardRequests") | tojson }}'>
+    <div id="invenio-search-config">
+        {# data-invenio-search-config='{{ search_app_rdm_user_requests_config(app_id="InvenioAppRdm.DashboardRequests") | tojson }}'>#}
     </div>
 {%- endblock user_dashboard_body %}
