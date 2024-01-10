@@ -1,4 +1,3 @@
-import _get from "lodash/get";
 import _truncate from "lodash/truncate";
 import React from "react";
 import { Button, Card, Divider, Header, Segment } from "semantic-ui-react";
@@ -25,7 +24,7 @@ import {
 } from "../components/base";
 import { i18next } from "@translations/oarepo_user_dashboard_ui/i18next";
 
-const appName = "UserDashboard.Uploads";
+const appName = "UserDashboard.Communities";
 
 const ResultsListItem = ({ result, index }) => <div>Result list item</div>;
 const CountElement = ({ total }) => <div>Count element</div>;
@@ -62,12 +61,14 @@ export const defaultComponents = {
   // [`${appName}.SearchApp.facets`]: ContribSearchAppFacetsWithConfig,
   [`${appName}.SearchApp.results`]: DashboardResultViewWAppName,
   // [`${appName}.SearchBar.element`]: RDMRecordSearchBarElement,
+  [`${appName}.SearchApp.facets`]: SearchAppFacets,
   [`${appName}.SearchApp.layout`]: DashboardUploadsSearchLayout,
   [`${appName}.SearchApp.sort`]: SearchAppSort,
 };
 
 // TODO: can provide overrides here before calling createSearchAppInit
 const overriddenComponents = overrideStore.getAll();
+console.log(Object.entries(defaultComponents));
 
 // TODO: search app has inbuilt mechanism to look for overrides in @templates simikar
 // to how it looks for custom fields im templates/custom_fields

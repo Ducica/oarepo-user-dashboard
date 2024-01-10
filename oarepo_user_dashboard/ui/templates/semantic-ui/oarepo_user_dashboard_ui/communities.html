@@ -10,6 +10,7 @@
 {% set active_dashboard_menu_item = "communities" %}
 {%- block javascript %}
     {{ super() }}
+    {{ webpack['oarepo_user_dashboard_communities.js'] }}
 {%- endblock javascript %}
 {%- block user_dashboard_body %}
 <div id="invenio-search-config"
