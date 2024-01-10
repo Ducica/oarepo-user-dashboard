@@ -92,7 +92,6 @@ try:
             id = unidecode(id.lower())
             assert id not in ids
 
-            print(id, str(row[7] or slug))
 
             ids.add(id)
             stack.append((id, base))

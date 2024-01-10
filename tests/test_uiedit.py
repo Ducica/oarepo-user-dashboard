@@ -27,7 +27,6 @@ def test_uiedit(
     Vocabulary.index.refresh()
     edit_page = client_with_credentials.get("/vocabularies/languages/1/edit")
     assert edit_page.status_code == 200
-    print(edit_page.text)
     assert (
         remove_ws(
             """  

@@ -11,11 +11,12 @@ theme = WebpackThemeBundle(
 
             },
             dependencies={
-                "@tanstack/react-query": "^4",
+                "styled-components": "^6",
             },
             devDependencies={},
             aliases={
-                
+                "@translations/oarepo_user_dashboard_ui": "./translations/oarepo_user_dashboard_ui",
+
             },
         )
     },
