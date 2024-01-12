@@ -59,8 +59,9 @@ class InvenioVocabulariesUIResource(RecordsUIResource):
             identity=g.identity,
             overrides={"endpoint": "/api/user/communities"},
         )
+        
         search_config = partial(self.config.search_app_config, **search_options)
-        search_app_config = search_config(app_id="UserDashboard.Communities")
+        search_app_config = search_config(app_id="UserDashboard.Communities", endpoint= "/api/user/communities")
         return render_template(self.config.templates["communities"]["layout"], search_app_config=search_app_config)
     
     # @request_read_args
