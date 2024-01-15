@@ -13,17 +13,32 @@ import {
 } from "@js/invenio_search_ui/components";
 import { i18next } from "@translations/oarepo_user_dashboard_ui/i18next";
 import React from "react";
-import { Count, ResultsList, SearchBar, Sort, buildUID } from "react-searchkit";
+import {
+  Count,
+  ResultsList,
+  SearchBar,
+  Sort,
+  buildUID,
+  Pagination,
+  ResultsPerPage,
+} from "react-searchkit";
 import { GridResponsiveSidebarColumn } from "react-invenio-forms";
 import { Grid, Segment, Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import Overridable from "react-overridable";
-import { SearchAppFacets } from "@js/oarepo_ui";
+import {
+  SearchAppFacets,
+  ResultCount,
+  SearchAppSort,
+  ResultsPerPageLabel,
+} from "@js/oarepo_ui";
 
 export function DashboardResultView(props) {
   const { sortOptions, paginationOptions, currentResultsState, appName } =
     props;
+  console.log(sortOptions);
   const { total } = currentResultsState.data;
+  const { resultsPerPage } = paginationOptions;
   return (
     total && (
       <Grid>
@@ -43,33 +58,15 @@ export function DashboardResultView(props) {
                     className="small pt-5 pb-5 highlight-background"
                   >
                     <Grid.Column width={4}>
-                      <Count
-                        label={() => (
-                          <>
-                            {i18next.t("{{count}} results found", {
-                              count: total,
-                            })}
-                          </>
-                        )}
-                      />
+                      <ResultCount currentResultsState={currentResultsState} />
                     </Grid.Column>
                     <Grid.Column
                       width={12}
                       textAlign="right"
                       className="padding-r-5"
                     >
-                      {sortOptions && (
-                        <Sort
-                          values={sortOptions}
-                          label={(cmp) => (
-                            <>
-                              <label className="mr-10">
-                                {i18next.t("Sort by")}
-                              </label>
-                              {cmp}
-                            </>
-                          )}
-                        />
+                      {sortOptions.length > 0 && (
+                        <SearchAppSort options={sortOptions} />
                       )}
                     </Grid.Column>
                   </Grid.Row>
@@ -98,7 +95,61 @@ export function DashboardResultView(props) {
           currentResultsState={currentResultsState}
           appName={appName}
         >
-          <InvenioSearchPagination paginationOptions={paginationOptions} />
+          {total > 10 && (
+            <Grid.Row verticalAlign="middle" className="rel-mb-2">
+              <Grid.Column
+                className="computer tablet only"
+                width={4}
+              ></Grid.Column>
+              <Grid.Column
+                className="computer tablet only"
+                width={8}
+                textAlign="center"
+              >
+                <Pagination
+                  options={{
+                    size: "mini",
+                    showFirst: false,
+                    showLast: false,
+                  }}
+                />
+              </Grid.Column>
+              <Grid.Column
+                className="mobile only"
+                width={16}
+                textAlign="center"
+              >
+                <Pagination
+                  options={{
+                    size: "mini",
+                    boundaryRangeCount: 0,
+                    showFirst: false,
+                    showLast: false,
+                  }}
+                />
+              </Grid.Column>
+              <Grid.Column
+                className="computer tablet only "
+                textAlign="right"
+                width={4}
+              >
+                <ResultsPerPage
+                  values={resultsPerPage}
+                  label={ResultsPerPageLabel}
+                />
+              </Grid.Column>
+              <Grid.Column
+                className="mobile only mt-10"
+                textAlign="center"
+                width={16}
+              >
+                <ResultsPerPage
+                  values={resultsPerPage}
+                  label={ResultsPerPageLabel}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          )}
         </Overridable>
       </Grid>
     )

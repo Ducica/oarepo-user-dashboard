@@ -1,7 +1,6 @@
 import _get from "lodash/get";
-import _truncate from "lodash/truncate";
 import React from "react";
-import { Button, Card, Divider, Header, Segment } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import { parametrize, overrideStore } from "react-overridable";
 import { http } from "react-invenio-forms";
 import { createSearchAppInit } from "@js/invenio_search_ui";
@@ -24,10 +23,35 @@ import {
   DashboardSearchLayoutHOC,
 } from "../components/base";
 import { i18next } from "@translations/oarepo_user_dashboard_ui/i18next";
+import { ComputerTabletUploadsItem } from "../components/resultitems/uploads/ComputerTabletUploadsItem";
+import { MobileUploadsItem } from "../components/resultitems/uploads/MobileUploadsItem";
 
 const appName = "UserDashboard.Uploads";
 
-const ResultsListItem = ({ result, index }) => <div>Result list item</div>;
+export const UserDashboardResultListItem = ({ result }) => {
+  const uiMetadata = {
+    title: _get(result, "metadata.title", i18next.t("No title")),
+    // abstract: _get(result, "metadata.abstract", i18next.t("No abstract")),
+    resourceType: _get(
+      result,
+      "metadata.resourceType",
+      i18next.t("No resource type")
+    ),
+    createdDate: _get(result, "created"),
+    viewLink: _get(result, "links.self_html"),
+  };
+
+  return (
+    <React.Fragment>
+      <MobileUploadsItem result={result} uiMetadata={uiMetadata} />
+      <ComputerTabletUploadsItem result={result} uiMetadata={uiMetadata} />
+    </React.Fragment>
+  );
+};
+
+UserDashboardResultListItem.propTypes = {
+  result: PropTypes.object.isRequired,
+};
 const CountElement = ({ total }) => <div>Count element</div>;
 const BucketElement = ({ bucket }) => <div>Bucket element</div>;
 
@@ -41,7 +65,7 @@ export const DashboardUploadsSearchLayout = DashboardSearchLayoutHOC({
     <Button
       positive
       icon="upload"
-      href="/uploads/new"
+      href="/docs/_new"
       content={i18next.t("New upload")}
       floated="right"
     />
@@ -56,9 +80,8 @@ export const defaultComponents = {
     BucketAggregationValuesElement,
   [`${appName}.BucketAggregationValues.element`]: BucketAggregationElement,
   [`${appName}.SearchApp.resultOptions`]: SearchAppResultOptions,
-  [`${appName}.SearchApp.results`]: SearchAppResults,
   // [`${appName}.EmptyResults.element`]: RDMEmptyResults,
-  [`${appName}.ResultsList.item`]: ResultsListItem,
+  [`${appName}.ResultsList.item`]: UserDashboardResultListItem,
   // [`${appName}.SearchApp.facets`]: ContribSearchAppFacetsWithConfig,
   [`${appName}.SearchApp.results`]: DashboardResultViewWAppName,
   // [`${appName}.SearchBar.element`]: RDMRecordSearchBarElement,

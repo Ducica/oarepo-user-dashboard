@@ -7,6 +7,8 @@
   #}
 {%- extends config.BASE_TEMPLATE %}
 {%- block page_body %}
+{{config.BASE_TEMPLATE}}
+
     {%- block user_dashboard_header %}
         {% include "oarepo_user_dashboard_ui/header.html" %}
     {%- endblock user_dashboard_header %}
