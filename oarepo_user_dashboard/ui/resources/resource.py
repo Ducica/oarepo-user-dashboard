@@ -39,6 +39,8 @@ class InvenioVocabulariesUIResource(RecordsUIResource):
             routes += [route("GET", route_config["uploads"], self.uploads)]
         if "communities" in route_config:
             routes += [route("GET", route_config["communities"], self.communities)]
+        if "requests" in route_config:
+            routes += [route("GET", route_config["requests"], self.requests)]    
         return routes
     
     def uploads(self):
@@ -57,13 +59,22 @@ class InvenioVocabulariesUIResource(RecordsUIResource):
         search_options = dict(
             api_config=self.api_service.config,
             identity=g.identity,
-            overrides={"endpoint": "/api/user/communities"},
         )
         
         search_config = partial(self.config.search_app_config, **search_options)
         search_app_config = search_config(app_id="UserDashboard.Communities", endpoint= "/api/user/communities")
         return render_template(self.config.templates["communities"]["layout"], search_app_config=search_app_config)
     
+    
+    def requests(self):
+        search_options = dict(
+            api_config=self.api_service.config,
+            identity=g.identity,
+        )
+        
+        search_config = partial(self.config.search_app_config, **search_options)
+        search_app_config = search_config(app_id="UserDashboard.Requests", endpoint= "/api/user/requests")
+        return render_template(self.config.templates["requests"]["layout"], search_app_config=search_app_config)
     # @request_read_args
     # @request_view_args
     # @request_vocabulary_args

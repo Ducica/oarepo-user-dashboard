@@ -26,11 +26,11 @@ def create_blueprint(app):
             order=2,
             )
             
-            # user_dashboard.submenu("requests").register(
-            # "oarepo_user_dashboard_ui.requests",
-            # text=_("My requests"),
-            # order=3,
-            # )
+            user_dashboard.submenu("requests").register(
+            "oarepo_user_dashboard_ui.requests",
+            text=_("My requests"),
+            order=3,
+            )
         return app_blueprint
 
 

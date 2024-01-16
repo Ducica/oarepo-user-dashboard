@@ -47,6 +47,9 @@ class InvenioVocabulariesUIResourceConfig(RecordsUIResourceConfig):
         "communities": {
             "layout": "oarepo_user_dashboard_ui/communities.html",
         },
+        "requests": {
+            "layout": "oarepo_user_dashboard_ui/requests.html",
+        },
        
     }
     
@@ -63,6 +66,7 @@ class InvenioVocabulariesUIResourceConfig(RecordsUIResourceConfig):
     routes = {
         "uploads": "/uploads/",
         "communities": "/communities/",
+        "requests": "/requests/",
         "search": "/<vocabulary_type>/",
         "detail": "/<vocabulary_type>/<pid_value>",
         "export": "/<vocabulary_type>/<pid_value>/export/<export_format>",

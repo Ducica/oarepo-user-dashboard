@@ -41,7 +41,7 @@ export function DashboardResultView(props) {
   const { resultsPerPage } = paginationOptions;
   return (
     total && (
-      <Grid>
+      <Grid className="rel-mb-2">
         <Grid.Row>
           <Grid.Column width={16}>
             <Segment>
@@ -96,7 +96,7 @@ export function DashboardResultView(props) {
           appName={appName}
         >
           {total > 10 && (
-            <Grid.Row verticalAlign="middle" className="rel-mb-2">
+            <Grid.Row verticalAlign="middle">
               <Grid.Column
                 className="computer tablet only"
                 width={4}
