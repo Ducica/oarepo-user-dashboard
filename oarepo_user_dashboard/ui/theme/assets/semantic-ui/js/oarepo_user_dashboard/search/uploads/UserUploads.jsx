@@ -26,6 +26,7 @@ import { ComputerTabletUploadsItem } from "../components/resultitems/uploads/Com
 import { MobileUploadsItem } from "../components/resultitems/uploads/MobileUploadsItem";
 import { MultipleOptionsSearchBarRSK } from "@js/invenio_search_ui/components";
 import { RDMRecordSearchBarElement } from "../components/SearchBar";
+import { ResultsListItem } from "@js/docs_app/search/components";
 const appName = "UserDashboard.Uploads";
 
 export const UserDashboardResultListItem = ({ result }) => {
@@ -75,7 +76,7 @@ export const defaultComponents = {
     BucketAggregationValuesElement,
   [`${appName}.SearchApp.resultOptions`]: SearchAppResultOptions,
   // [`${appName}.EmptyResults.element`]: RDMEmptyResults,
-  [`${appName}.ResultsList.item`]: UserDashboardResultListItem,
+  [`${appName}.ResultsList.item`]: ResultsListItem,
   // [`${appName}.SearchApp.facets`]: ContribSearchAppFacetsWithConfig,
   [`${appName}.SearchApp.results`]: DashboardResultViewWAppName,
   [`${appName}.SearchBar.element`]: RDMRecordSearchBarElement,

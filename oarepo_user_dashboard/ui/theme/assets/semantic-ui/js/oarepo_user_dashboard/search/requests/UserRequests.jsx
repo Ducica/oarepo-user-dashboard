@@ -1,96 +1,79 @@
-import _get from "lodash/get";
-import React from "react";
-import { Button } from "semantic-ui-react";
-import { parametrize, overrideStore } from "react-overridable";
-import { createSearchAppInit } from "@js/invenio_search_ui";
-import PropTypes from "prop-types";
-import {
-  ActiveFiltersElement,
-  BucketAggregationElement,
-  BucketAggregationValuesElement,
-  ErrorElement,
-  SearchAppFacets,
-  SearchAppLayout,
-  SearchAppResults,
-  SearchAppResultOptions,
-  SearchAppSearchbarContainer,
-  SearchFiltersToggleElement,
-  SearchAppSort,
-} from "@js/oarepo_ui/search";
-import {
-  DashboardResultView,
-  DashboardSearchLayoutHOC,
-} from "../components/base";
-import { i18next } from "@translations/oarepo_user_dashboard_ui/i18next";
-import { ComputerTabletUploadsItem } from "../components/resultitems/uploads/ComputerTabletUploadsItem";
-import { MobileUploadsItem } from "../components/resultitems/uploads/MobileUploadsItem";
-import { MultipleOptionsSearchBarRSK } from "@js/invenio_search_ui/components";
-import { RDMRecordSearchBarElement } from "../components/SearchBar";
-const appName = "UserDashboard.Uploads";
+// // This file is part of InvenioRDM
+// // Copyright (C) 2020-2023 CERN.
+// // Copyright (C) 2020-2021 Northwestern University.
+// // Copyright (C) 2021 Graz University of Technology.
+// // Copyright (C) 2021 New York University.
+// //
+// // Invenio App RDM is free software; you can redistribute it and/or modify it
+// // under the terms of the MIT License; see LICENSE file for more details.
 
-export const UserDashboardResultListItem = ({ result }) => {
-  console.log("blabla");
-  const uiMetadata = {
-    title: _get(result, "metadata.title", i18next.t("No title")),
-    // abstract: _get(result, "metadata.abstract", i18next.t("No abstract")),
-    resourceType: _get(
-      result,
-      "metadata.resourceType",
-      i18next.t("No resource type")
-    ),
-    createdDate: _get(result, "created"),
-    viewLink: _get(result, "links.self_html"),
-  };
+// import { createSearchAppInit } from "@js/invenio_search_ui";
+// import {
+//   ContribBucketAggregationElement,
+//   ContribBucketAggregationValuesElement,
+//   ContribSearchAppFacets,
+// } from "@js/invenio_search_ui/components";
+// import PropTypes from "prop-types";
+// import React from "react";
+// import { overrideStore, parametrize } from "react-overridable";
+// import { withState } from "react-searchkit";
+// import { defaultContribComponents } from "@js/invenio_requests/contrib";
+// import { RDMRecordSearchBarElement } from "../components/SearchBar";
 
-  return (
-    <React.Fragment>
-      <MobileUploadsItem result={result} uiMetadata={uiMetadata} />
-      <ComputerTabletUploadsItem result={result} uiMetadata={uiMetadata} />
-    </React.Fragment>
-  );
-};
+// import {
+//   RequestsSearchLayout,
+//   RequestsEmptyResultsWithState,
+//   RequestsResults,
+// } from "@js/invenio_requests/search";
+// import { RequestsResultItem } from "../components/resultitems/requests/RequestsResultItem";
+// import { SearchAppFacets } from "@js/oarepo_ui";
 
-const DashboardResultViewWAppName = parametrize(DashboardResultView, {
-  appName: appName,
-});
+// const appName = "UserDashboard.Requests";
 
-export const DashboardUploadsSearchLayout = DashboardSearchLayoutHOC({
-  searchBarPlaceholder: i18next.t("Search in my uploads..."),
-  newBtn: (
-    <Button
-      positive
-      icon="upload"
-      href="/docs/_new"
-      content={i18next.t("New upload")}
-      floated="right"
-    />
-  ),
-  appName: appName,
-});
-export const defaultComponents = {
-  [`${appName}.ActiveFilters.element`]: ActiveFiltersElement,
+// export function RequestsResultsItemTemplateDashboard({ result }) {
+//   const ComputerTabletRequestsItemWithState = withState(
+//     ComputerTabletRequestItem
+//   );
+//   const MobileRequestsItemWithState = withState(MobileRequestItem);
+//   const detailsURL = `/me/requests/${result.id}`;
+//   return (
+//     <>
+//       <ComputerTabletRequestsItemWithState
+//         result={result}
+//         detailsURL={detailsURL}
+//       />
+//       <MobileRequestsItemWithState result={result} detailsURL={detailsURL} />
+//     </>
+//   );
+// }
 
-  [`${appName}.BucketAggregation.element`]: BucketAggregationElement,
-  [`${appName}.BucketAggregationValues.element`]:
-    BucketAggregationValuesElement,
-  [`${appName}.SearchApp.resultOptions`]: SearchAppResultOptions,
-  // [`${appName}.EmptyResults.element`]: RDMEmptyResults,
-  [`${appName}.ResultsList.item`]: UserDashboardResultListItem,
-  // [`${appName}.SearchApp.facets`]: ContribSearchAppFacetsWithConfig,
-  [`${appName}.SearchApp.results`]: DashboardResultViewWAppName,
-  [`${appName}.SearchBar.element`]: RDMRecordSearchBarElement,
-  [`${appName}.SearchApp.layout`]: DashboardUploadsSearchLayout,
-  [`${appName}.SearchApp.sort`]: SearchAppSort,
-};
+// RequestsResultsItemTemplateDashboard.propTypes = {
+//   result: PropTypes.object.isRequired,
+// };
 
-// TODO: can provide overrides here before calling createSearchAppInit
-const overriddenComponents = overrideStore.getAll();
+// const RequestsSearchLayoutWithApp = parametrize(RequestsSearchLayout, {
+//   appName: appName,
+// });
 
-// TODO: search app has inbuilt mechanism to look for overrides in @templates simikar
-// to how it looks for custom fields im templates/custom_fields
-createSearchAppInit(
-  { ...defaultComponents, ...overriddenComponents },
-  true,
-  "invenio-search-config",
-  true
-);
+// export const defaultComponents = {
+//   [`${appName}.BucketAggregation.element`]: ContribBucketAggregationElement,
+//   [`${appName}.BucketAggregationValues.element`]:
+//     ContribBucketAggregationValuesElement,
+//   [`${appName}.SearchApp.facets`]: SearchAppFacets,
+//   [`${appName}.ResultsList.item`]: RequestsResultsItemTemplateDashboard,
+//   [`${appName}.ResultsGrid.item`]: () => null,
+//   [`${appName}.SearchApp.layout`]: RequestsSearchLayoutWithApp,
+//   [`${appName}.SearchApp.results`]: RequestsResults,
+//   [`${appName}.SearchBar.element`]: RDMRecordSearchBarElement,
+//   [`${appName}.EmptyResults.element`]: RequestsEmptyResultsWithState,
+//   ...defaultContribComponents,
+// };
+
+// const overriddenComponents = overrideStore.getAll();
+
+// createSearchAppInit(
+//   { ...defaultComponents, ...overriddenComponents },
+//   true,
+//   "invenio-search-config",
+//   true
+// );
